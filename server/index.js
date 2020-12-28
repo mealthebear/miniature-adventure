@@ -6,7 +6,7 @@ const router = require('./router.js');
 const app = express();
 const port = 3000;
 
-app.use(json.bodyParser())
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/client/dist')));
 
