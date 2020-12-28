@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -w -d",
+    "build": "webpack -w",
     "start": "nodemon server"
   },
   "repository": {
