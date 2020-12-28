@@ -19,7 +19,7 @@ const getAllUsers = () => {
 };
 
 const updateUser = (updatedInfo, existingUser) => {
-  return User.findOneAndUpdate(updatedInfo, existingUser);
+  return User.replaceOne(existingUser, updatedInfo);
 }
 
 module.exports = {

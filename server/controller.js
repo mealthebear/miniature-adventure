@@ -6,23 +6,18 @@ const {
 } = require('../database/dbHelpers.js');
 
 const createUserController = (req, res) => {
-  console.log(req.data);
-  console.log(req.params);
-  console.log(req.body);
-  createUser()
+  return Promise.resolve(createUser(req.body)
   .then((data) => {
     res.status(201).send(data)
   })
   .catch((err) => {
     res.status(401).send(err);
-  });
+  }));
 }
 
 const deleteUserController = (req, res) => {
-  console.log(req.data);
-  console.log(req.params);
   console.log(req.body);
-  deleteUser()
+  deleteUser(req.body)
   .then((data) => {
     res.status(200).send(data)
   })
@@ -32,9 +27,6 @@ const deleteUserController = (req, res) => {
 }
 
 const getAllUsersController = (req, res) => {
-  console.log(req.data);
-  console.log(req.params);
-  console.log(req.body);
   getAllUsers()
   .then((data) => {
     res.status(200).send(data)
@@ -45,10 +37,10 @@ const getAllUsersController = (req, res) => {
 }
 
 const updateUserController = (req, res) => {
-  console.log(req.data);
-  console.log(req.params);
   console.log(req.body);
-  updateUser()
+  const updatedInfo = { name: req.body.newName, age: req.body.newAge};
+  const existingInfo = { name: req.body.name };
+  updateUser(updatedInfo, existingInfo)
   .then((data) => {
     res.status(200).send(data)
   })
